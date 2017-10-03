@@ -19,4 +19,7 @@ export class HomePage {
     this.navCtrl.push('my');
   }
 
+  navigate2ListPage() {
+    this.navCtrl.push('list');
+  }
 }

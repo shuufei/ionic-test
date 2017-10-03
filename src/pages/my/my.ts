@@ -10,7 +10,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage({
   name: 'my',
-  segment: 'my-page'
+  segment: 'my-page',
+  defaultHistory: ['list']
 })
 @Component({
   selector: 'page-my',

@@ -36,4 +36,8 @@ export class PostPage {
     this.viewCtrl.dismiss();
   }
 
+  navigateToLink() {
+    this.navCtrl.push('list');
+  }
+
 }

@@ -1,3 +1,5 @@
+<!-- <div id="home-page"> -->
+<div class="home-page">
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -6,9 +8,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding [class.zero-opacity]="isOpacty">
   <button ion-button full (click)="navigate2MyPage()">to my page</button>
   <button ion-button full color="secondary" (click)="navigate2ListPage()">to list page</button>
+  <button ion-button full color="dark" (click)="navigateToPostPage()">Post Tweet</button>
+  <button ion-button full color="light" (click)="navigateToSlidePage()">to Slide Page</button>
   <!-- <ul>
     <li [@heroState]="state" (click)="toggleState()">
       myHero
@@ -16,5 +20,7 @@
   </ul> -->
   <button ion-button color="danger" (click)="toggleMenu()">open menu</button>
 
-  <slide-menu *ngFor="let i of states" [@isOpen]="i.state" (click)="i.toggleState()"></slide-menu>
+  <!-- <slide-menu *ngFor="let slideMenu of slideMenus" [isOpen]="slideMenu.state" (click)="slideMenu.toggleState()"></slide-menu> -->
+  <slide-menu *ngFor="let slideMenu of slideMenus" [isOpen]="slideMenu.state" (touchstart)="slideMenu.toggleState()" (click)="clickEvent()"></slide-menu>
 </ion-content>
+</div>

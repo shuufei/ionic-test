@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
+// import 'web-animations-js/web-animations.min';
 // import { State } from './state.service';
 
 /**
@@ -44,13 +44,14 @@ export class SlideMenuComponent {
   // @Input() state: State;
 
   constructor() {
-    console.log('Hello SlideMenuComponent Component');
+    // console.log('Hello SlideMenuComponent Component');
     this.text = 'Hello World';
     this.state = 'in';
     // console.log(this.state);
   }
 
   toggleState() {
+    console.log('=== touchstart ===');
     this.state = this.state === 'void' ? 'in' : 'void';
   }
 

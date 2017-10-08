@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, ModalController } from 'ionic-angular';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { SlideMenuComponent } from '../../components/slide-menu/slide-menu';
+// import 'web-animations-js/web-animations.min';
 
 @IonicPage({
   name: 'home',
@@ -29,15 +30,24 @@ export class HomePage {
   state: string;
   menuState: string;
   list: Array<number>;
-  states: Array<SlideMenuComponent>;
+  slideMenus: Array<SlideMenuComponent>;
+  isOpacity = true;
   // slide: SlideMenuComponent;
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController
+  ) {
     this.state = 'inactive';
     // this.menuState = 'active';
     this.menuState = 'void';
     this.list = [0, 1, 2];
-    this.states = [new SlideMenuComponent(), new SlideMenuComponent()];
+    this.slideMenus = [new SlideMenuComponent(), new SlideMenuComponent()];
     // this.slideMenus = [this.slide, this.slide, this.slide];
+  }
+
+  ionViewWillLeave() {
+    this.isOpacity = true;
+    console.log('=== ion viw will leave ===');
   }
 
   navigate2MyPage() {
@@ -55,6 +65,33 @@ export class HomePage {
   toggleMenu() {
     // this.menuState = this.menuState === 'active' ? 'inactive' : 'active';
     // this.menuState = this.menuState === 'void' ? 'in' : 'void';
-    this.states = [new SlideMenuComponent(), new SlideMenuComponent()];
+    this.slideMenus = [new SlideMenuComponent(), new SlideMenuComponent()];
+  }
+
+  clickEvent() {
+    console.log('=== click ===')
+  }
+
+  navigateToPostPage() {
+    console.log('=== navigate to post page ===');
+    // this.navCtrl.push('post', {}, {
+    //   animate: false
+    // });
+    // this.navCtrl.insert(2, 'post', {}, {
+    //   animate: false
+    // });
+    // let el = document.getElementById('home-page');
+    let el = document.getElementsByClassName('home-page')[0];
+    console.log(el);
+    el.classList.add('to-go-back');
+    let postModal = this.modalCtrl.create('post', {}, {});
+    postModal.onDidDismiss(data => {
+      // el.classList.remove('to-go-back');
+    });
+    postModal.present();
+  }
+
+  navigateToSlidePage() {
+    this.navCtrl.push('slide');
   }
 }

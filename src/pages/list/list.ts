@@ -33,7 +33,7 @@ export class ListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListPage');
+    // console.log('ionViewDidLoad ListPage');
   }
 
   navigateToItemDetail(itemId) {
